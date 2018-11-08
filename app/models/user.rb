@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-has_one :dailyStatus
+has_many :daily_statuses
 
 
 

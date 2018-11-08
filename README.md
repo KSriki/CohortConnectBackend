@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+* Get user's daily statuses persisting to DB
 
-* Ruby version
+* Form on UserCard to submit status => POST request to DB
 
-* System dependencies
+* Details page for each user with client-side routes
+  * List of past statuses and maybe repos/events
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Reach goal of learn-style activity feed for statuses (then events)
