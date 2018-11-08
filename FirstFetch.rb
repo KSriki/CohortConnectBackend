@@ -2,11 +2,6 @@ require 'rest-client'
 require 'byebug'
 require 'json'
 
-
-gitHubEventsApiDocs = "https://developer.github.com/v3/activity/events/"
-gitHubUsersApiDocs = "https://developer.github.com/v3/users/"
-apiUrl = "/users/:username/events"
-
 userNames = {
   dru: "drubaby",
   srikant: "ksriki",
@@ -19,7 +14,6 @@ userNames = {
   brian: "brianhkang1",
   jake: "jb5595"
 }
-
 #may have to log in first with
 # curl -u "username" https://api.github.com
 
@@ -32,16 +26,16 @@ userNames.each do |user, username|
   avatar_url = resp["avatar_url"]
   bio = resp["bio"]
   html_url = resp["html_url"]
+  email = resp["email"]
   github_id = resp["id"]
 
-  User.create( name: name, login: login, avatar_url: avatar_url, bio: bio, html_url: html_url, github_identifier: github_id )
 
-  # puts login # aka username
-  # puts name
-  # puts avatar_url
-  # puts bio ##sometimes blank
-  # puts html_url
-  #
-  # puts github_id
-
+  puts login # aka username
+  puts name
+  puts avatar_url
+  puts bio ##sometimes blank
+  puts html_url
+  puts email ##always blank
+  puts github_id
+  puts "*********"
 end
