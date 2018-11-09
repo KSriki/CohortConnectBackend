@@ -2,7 +2,7 @@ class DailyStatusController < ApplicationController
 
 
   def create
-    dailyStatus = DailyStatus.create(dailyStatus_params)
+    dailyStatus = DailyStatus.create(status_params)
     render json: dailyStatus.to_json
 
   end
@@ -20,7 +20,7 @@ class DailyStatusController < ApplicationController
 
   private
   def status_params
-    params.require(:dailyStatus).permit(:status)
+    params.require(:dailyStatus).permit(:status, :user_id)
   end
 
 
