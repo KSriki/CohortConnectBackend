@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   post 'daily_status/create'
   get 'daily_status/show'
   get 'daily_status/', to: 'daily_status#index'
