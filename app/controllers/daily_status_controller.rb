@@ -1,5 +1,8 @@
 class DailyStatusController < ApplicationController
 
+    def index
+        render json: DailyStatus.all.to_json
+    end
 
   def create
     dailyStatus = DailyStatus.create(status_params)
