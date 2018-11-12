@@ -3,39 +3,33 @@ require 'byebug'
 require 'json'
 
 userNames = {
-  dru: "drubaby",
-  srikant: "ksriki",
-  adam: "adamwjo",
-  trevor: "trevor-jameson",
-  angelica: "carowink91",
-  samTheDriver: "samthedriver",
-  samAshtar: "samashtar",
-  patti: "patti-c",
-  brian: "brianhkang1",
-  jake: "jb5595"
+  # dru: "drubaby",
+  # srikant: "ksriki",
+  # adam: "adamwjo",
+  trevor: "trevor-jameson"
+  # angelica: "carowink91",
+  # samTheDriver: "samthedriver",
+  # samAshtar: "samashtar",
+  # patti: "patti-c",
+  # brian: "brianhkang1",
+  # jake: "jb5595"
 }
 #may have to log in first with
 # curl -u "username" https://api.github.com
 
 userNames.each do |user, username|
-  resp = RestClient.get('https://api.github.com/users/' + username )
+  resp = RestClient.get('https://api.github.com/users/' + username + '/events?per_page=5')
   resp = JSON.parse(resp)
+  resp.each do |resp|
+    git_event_id = resp["id"]
+    type = resp["type"]
+    user_name = resp["actor"]["login"]
+    repo_name = resp["repo"]["name"]
+    repo_url = resp["repo"]["url"]
+    created_at = resp["created_at"]
 
-  login = resp["login"]
-  name = resp["name"]
-  avatar_url = resp["avatar_url"]
-  bio = resp["bio"]
-  html_url = resp["html_url"]
-  email = resp["email"]
-  github_id = resp["id"]
+    user_id = User.find_by_login(username).id
+    Event.create(user_id: user_id, git_event_id: git_event_id, repo_url: repo_url, repo_name: repo_name, login: user_name, time_of_event: created_at, event_type: type)
 
-
-  puts login # aka username
-  puts name
-  puts avatar_url
-  puts bio ##sometimes blank
-  puts html_url
-  puts email ##always blank
-  puts github_id
-  puts "*********"
+  end
 end
