@@ -1,7 +1,7 @@
-# README
+# READMEcd 
 
+* Aesthetics: background image for main page and details?
 
-* Details page for each user with client-side routes
-  * List of past statuses and maybe repos/events
+* Navbar with logo, link to home page
 
-* Reach goal of learn-style activity feed for statuses (then events)
+* Main page style rule to enforce card size

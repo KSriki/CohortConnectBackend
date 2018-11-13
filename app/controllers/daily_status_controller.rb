@@ -7,7 +7,6 @@ class DailyStatusController < ApplicationController
   def create
     dailyStatus = DailyStatus.create(status_params)
     render json: dailyStatus.to_json
-
   end
 
   def show
@@ -18,6 +17,12 @@ class DailyStatusController < ApplicationController
   def update
     dailyStatus = DailyStatus.find(params[:id])
     dailyStatus.update(status_params)
+    render json: dailyStatus.to_json
+  end
+
+  def delete
+    dailyStatus = DailyStatus.find(params[:id])
+    dailyStatus.destroy()
     render json: dailyStatus.to_json
   end
 
